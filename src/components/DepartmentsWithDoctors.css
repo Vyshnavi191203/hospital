@@ -1,0 +1,66 @@
+.dept-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .dept-header {
+    margin-bottom: 20px;
+  }
+  
+  .dept-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .dept-sidebar {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .dept-content {
+    flex: 3;
+  }
+  
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .dept-card, .doctor-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    width: 200px;
+    cursor: pointer; /* Add cursor pointer */
+    transition: transform 0.2s, box-shadow 0.2s; /* Add transition for hover effect */
+  }
+  
+  .dept-card:hover, .doctor-card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  }
+  
+  .dept-card img, .doctor-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .book-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #3f86f2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .book-btn:hover {
+    background-color: #2c6bb2;
+  }
+  

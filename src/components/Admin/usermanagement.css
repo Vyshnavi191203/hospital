@@ -1,0 +1,185 @@
+/* usermanagement.css */
+ 
+.user-management-container {
+
+    background-color: #fff;
+  
+    padding: 30px;
+  
+    border-radius: 12px;
+  
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    max-width: 1200px;
+  
+    margin: 30px auto;
+  
+  }
+   
+  .user-management-container h3 {
+  
+    color: #3f86f2;
+  
+    margin-bottom: 20px;
+  
+    text-align: center;
+  
+  }
+   
+  .role-filter {
+  
+    display: flex;
+  
+    gap: 10px;
+  
+    margin-bottom: 20px;
+  
+  }
+   
+  .role-filter select,
+  
+  .role-filter button {
+  
+    padding: 10px;
+  
+    border-radius: 6px;
+  
+    font-weight: 500;
+  
+  }
+   
+  .role-filter button {
+  
+    background-color: #3f86f2;
+  
+    color: white;
+  
+    border: none;
+  
+  }
+   
+  .user-table {
+  
+    width: 100%;
+  
+    border-collapse: collapse;
+  
+    margin-top: 10px;
+  
+  }
+   
+  .user-table th,
+  
+  .user-table td {
+  
+    border: 1px solid #ddd;
+  
+    padding: 10px;
+  
+    text-align: center;
+  
+  }
+   
+  .user-table th {
+  
+    background-color: #3f86f2;
+  
+    color: white;
+  
+  }
+   
+  .user-table button {
+  
+    margin: 0 5px;
+  
+    padding: 6px 10px;
+  
+    border-radius: 5px;
+  
+    font-weight: 500;
+  
+    cursor: pointer;
+  
+    border: none;
+  
+  }
+   
+  .user-table .btn-info {
+  
+    background-color: #17a2b8;
+  
+    color: white;
+  
+  }
+   
+  .user-table .btn-danger {
+  
+    background-color: #dc3545;
+  
+    color: white;
+  
+  }
+   
+  /* Update Form Styling */
+  
+  .update-form {
+  
+    margin-top: 30px;
+  
+    background-color: #f8f9fc;
+  
+    padding: 20px;
+  
+    border-radius: 10px;
+  
+    max-width: 600px;
+  
+    margin-left: auto;
+  
+    margin-right: auto;
+  
+  }
+   
+  .update-form label {
+  
+    font-weight: 500;
+  
+    margin-bottom: 5px;
+  
+    display: block;
+  
+  }
+   
+  .update-form input {
+  
+    width: 100%;
+  
+    padding: 10px;
+  
+    border: 1px solid #ccc;
+  
+    border-radius: 6px;
+  
+    margin-bottom: 15px;
+  
+  }
+   
+  .update-form button {
+  
+    width: 100%;
+  
+    padding: 10px;
+  
+    background-color: #3f86f2;
+  
+    color: white;
+  
+    border: none;
+  
+    font-weight: 600;
+  
+    border-radius: 6px;
+  
+  }
+  
+   

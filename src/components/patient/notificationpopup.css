@@ -1,0 +1,31 @@
+/* components/patient/NotificationPopup.css */
+ 
+.notification-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    border: 2px solid #3f86f2;
+    color: #333;
+    padding: 16px 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: slideDown 0.4s ease-out;
+  }
+   
+  @keyframes slideDown {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+   
+  .popup-content button {
+    margin-top: 10px;
+    background-color: #3f86f2;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }

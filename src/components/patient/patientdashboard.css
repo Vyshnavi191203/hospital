@@ -1,0 +1,175 @@
+/* Global Reset */
+body, html {
+  background-color: #f4f7fb;
+  margin: 0;
+  padding: 0;
+  padding-top: 60px; /* Leave space for the dashboard-header */
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+ }
+ /* Dashboard Header (Logo + Toggle Button) */
+ .dashboard-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+ }
+ .navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+ }
+ .navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #002bb8;
+ }
+ .toggle-sidebar-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #3f86f2;
+  padding: 4px 8px;
+ }
+ /* Dashboard Container */
+ .dashboard-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+ }
+ /* Sidebar */
+ .sidebar {
+  width: 240px;
+  background-color: #3f86f2;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+  height: calc(100vh - 60px);
+  position: fixed;
+  top: 60px;
+  left: 0;
+  box-sizing: border-box;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+ }
+ .sidebar.hidden {
+  transform: translateX(-100%);
+ }
+ .sidebar-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
+ }
+ .sidebar button {
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  border: none;
+  background-color: white;
+  color: #3f86f2;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: left;
+  transition: all 0.2s ease;
+ }
+ .sidebar button.active,
+ .sidebar button:hover {
+  background-color: #e6f0ff;
+  color: #0d3b66;
+ }
+ .logout-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: auto;
+ }
+ /* Main Content */
+ .main-content {
+  margin-top: 60px;
+  margin-left: 240px;
+  padding: 30px;
+  background-color: #f4f7fb;
+  overflow-y: auto;
+  height: calc(100vh - 60px);
+  width: calc(100% - 240px);
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+ }
+ .main-content.full-width {
+  margin-left: 0;
+  width: 100%;
+ }
+ .top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  padding-left: 10px;
+ }
+ /* Dashboard Layout Grid */
+ .dashboard-grid-top,
+ .dashboard-grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+ }
+ /* Cards */
+ .dashboard-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+ }
+ .dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+ }
+ .card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+ }
+ /* Appointments Table */
+ .dashboard-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+ }
+ .dashboard-card th,
+ .dashboard-card td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+ }
+ .dashboard-card th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+ }
+ .dashboard-card td:last-child {
+  color: #3f86f2;
+  font-weight: 500;
+ }
+ .navbar-logo-btn {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  color: #002bb8;
+  cursor: pointer;
+ }

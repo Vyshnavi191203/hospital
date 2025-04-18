@@ -1,0 +1,51 @@
+.appointments-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+   
+  .appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+   
+  .appointments-table th,
+  .appointments-table td {
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    text-align: center;
+  }
+   
+  .appointments-table th {
+    background-color: #f0f8ff;
+    color: #3f86f2;
+    font-weight: 600;
+  }
+   
+  .appointments-table td button {
+    margin: 4px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3f86f2;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+  }
+   
+  .reschedule-row {
+    background-color: #fafafa;
+  }
+   
+  .reschedule-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+  }
+   
+  .reschedule-form select {
+    padding: 6px 10px;
+    border-radius: 5px;
+  }
