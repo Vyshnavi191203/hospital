@@ -47,7 +47,7 @@ const Navbar = ({ toggleSidebar }) => {
 <li><Link to="/about">About Us</Link></li>
 <li><Link to="/contact">Contact Us</Link></li>
 
-        {!token && <li><Link to="/">Login</Link></li>}
+        {!token && <li><Link to="/auth">Login</Link></li>}
 </ul>
 </nav>
 

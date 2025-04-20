@@ -66,6 +66,7 @@ return (
 <div className="sidebar">
 <h3 className="sidebar-title">Doctor Menu</h3>
 <button className={activeTab === 'dashboard' ? 'active' : ''} onClick={() => setActiveTab('dashboard')}>My Dashboard</button>
+<button className={activeTab === 'profile' ? 'active' : ''} onClick={() => setActiveTab('profile')}>My Profile</button>
 <button className={activeTab === 'appointments' ? 'active' : ''} onClick={() => setActiveTab('appointments')}>My Appointments</button>
 <button className={activeTab === 'schedule' ? 'active' : ''} onClick={() => setActiveTab('schedule')}>My Schedule</button>
 <button className={activeTab === 'history' ? 'active' : ''} onClick={() => setActiveTab('history')}>Medical History</button>
@@ -80,7 +81,7 @@ return (
 <>
 <div className="dashboard-grid-top">
 <div className="dashboard-card">
-<h3 className="card-title">My Doctor Schedules</h3>
+<h3 className="card-title">My Schedules</h3>
 <DoctorSchedule />
 </div>
 <div className="dashboard-card">

@@ -22,34 +22,6 @@
 
 }
 
-.profile-image {
-
-  width: 120px;
-
-  height: 120px;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-
-  display: block;
-
-  margin: 0 auto 10px;
-
-  cursor: pointer;
-
-  border: 2px solid #3f86f2;
-
-  transition: 0.3s;
-
-}
-
-.profile-image:hover {
-
-  opacity: 0.8;
-
-}
-
 .profile-form label {
 
   display: block;
