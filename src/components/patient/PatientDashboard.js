@@ -7,7 +7,7 @@ import NotificationPopup from './NotificationPopup';
 import './patientdashboard.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import {toast} from 'react-toastify';
 
 const PatientDashboard = () => {
   const [userId, setUserId] = useState(localStorage.getItem('userId'));
@@ -38,7 +38,7 @@ const PatientDashboard = () => {
             setUserId(response.data.userId);
           }
         } catch (err) {
-          console.error('Failed to fetch user:', err);
+          toast.error('Failed to fetch user:', err);
         }
       }
     };
@@ -57,7 +57,7 @@ const PatientDashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
       } catch (err) {
-        console.warn('Logout error:', err.message);
+        toast.warn('Logout error:', err.message);
       }
     }
     localStorage.clear();

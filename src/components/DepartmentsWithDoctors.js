@@ -17,7 +17,7 @@ const DepartmentsWithDoctors = () => {
 
   const fetchDepartments = async () => {
     try {
-      const res = await axios.get(`${API}/Appointment/departments`);
+      const res = await axios.get(`${API}/Appointment/all-departments`);
       setDepartments(res.data);
     } catch (err) {
       console.error('Error fetching departments:', err);

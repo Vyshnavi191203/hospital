@@ -6,6 +6,7 @@ import MedicalHistoryAdmin from './MedicalHistoryAdmin';
 import './admindashboard.css';
 import { useNavigate } from 'react-router-dom';
 
+
 const AdminDashboard = () => {
 const [sidebarVisible, setSidebarVisible] = useState(true);
 const [activeTab, setActiveTab] = useState('dashboard');

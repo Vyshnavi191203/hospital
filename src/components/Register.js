@@ -1,63 +1,57 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
-const Register = () => {
- const [form, setForm] = useState({
-   userId: '',
-   name: '',
-   role: '',
-   email: '',
-   age: '',
-   phone: '',
-   address: '',
-   password: ''
- });
- const [message, setMessage] = useState('');
- const [errors, setErrors] = useState({});
- const handleChange = (e) => {
-   setForm({ ...form, [e.target.name]: e.target.value });
- };
- const validate = () => {
-   let validationErrors = {};
-   if (!form.userId.trim()) validationErrors.userId = 'User ID is required';
-   if (!form.name.trim()) validationErrors.name = 'Name is required';
-   if (!form.role) validationErrors.role = 'Role is required';
-   if (!form.email || !/^\S+@\S+\.\S+$/.test(form.email)) validationErrors.email = 'Valid email is required';
-   if (!form.age || Number(form.age) <= 0) validationErrors.age = 'Enter valid age';
-   if (!form.phone || !/^\d{10}$/.test(form.phone)) validationErrors.phone = 'Enter valid 10-digit phone number';
-   if (!form.address.trim()) validationErrors.address = 'Address is required';
-   if (!form.password || form.password.length < 6) validationErrors.password = 'Password must be at least 6 characters';
-   return validationErrors;
- };
- const handleRegister = async (e) => {
-   e.preventDefault();
-   const validationErrors = validate();
-   if (Object.keys(validationErrors).length > 0) {
-     setErrors(validationErrors);
-     setMessage('');
-     return;
-   }
-   try {
-     await axios.post('https://localhost:7166/api/Users', form);
-     setMessage('Registration successful!');
-     setForm({
-       userId: '', name: '', role: '', email: '', age: '', phone: '', address: '', password: ''
-     });
-     setErrors({});
-   } catch {
-     setMessage('Registration failed. Try again.');
-   }
- };
- return (
+const Register = ({ onRegisterSuccess }) => {
+  const [form, setForm] = useState({
+    name: '',
+    role: '',
+    email: '',
+    age: '',
+    phone: '',
+    address: '',
+    password: ''
+  });
+  const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState({});
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const validate = () => {
+    let validationErrors = {};
+    if (!form.name.trim()) validationErrors.name = 'Name is required';
+    if (!form.role) validationErrors.role = 'Role is required';
+    if (!form.email || !/^\S+@\S+\.\S+$/.test(form.email)) validationErrors.email = 'Valid email is required';
+    if (!form.age || Number(form.age) <= 0) validationErrors.age = 'Enter valid age';
+    if (!form.phone || !/^\d{10}$/.test(form.phone)) validationErrors.phone = 'Enter valid 10-digit phone number';
+    if (!form.address.trim()) validationErrors.address = 'Address is required';
+    if (!form.password || form.password.length < 6) validationErrors.password = 'Password must be at least 6 characters';
+    return validationErrors;
+  };
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setMessage('');
+      return;
+    }
+    try {
+      await axios.post('https://localhost:7166/api/Users', form);
+      setMessage('Registration successful!');
+      setForm({
+        name: '', role: '', email: '', age: '', phone: '', address: '', password: ''
+      });
+      setErrors({});
+      if (onRegisterSuccess) onRegisterSuccess(); // Switch to login
+    } catch {
+      setMessage('Registration failed. Try again.');
+    }
+  };
+  return (
 <Container className="mt-5">
 <h2>Register</h2>
-     {message && <Alert variant="info">{message}</Alert>}
+      {message && <Alert variant="info">{message}</Alert>}
 <Form onSubmit={handleRegister}>
-<Form.Group controlId="userId">
-<Form.Label>User ID</Form.Label>
-<Form.Control type="text" name="userId" value={form.userId} onChange={handleChange} isInvalid={!!errors.userId} />
-<Form.Control.Feedback type="invalid">{errors.userId}</Form.Control.Feedback>
-</Form.Group>
 <Form.Group controlId="name">
 <Form.Label>Name</Form.Label>
 <Form.Control type="text" name="name" value={form.name} onChange={handleChange} isInvalid={!!errors.name} />
@@ -69,7 +63,6 @@ const Register = () => {
 <option value="">Select Role</option>
 <option value="Patient">Patient</option>
 <option value="Doctor">Doctor</option>
-<option value="Admin">Admin</option>
 </Form.Select>
 <Form.Control.Feedback type="invalid">{errors.role}</Form.Control.Feedback>
 </Form.Group>
@@ -101,6 +94,6 @@ const Register = () => {
 <Button variant="primary" type="submit" className="mt-3">Register</Button>
 </Form>
 </Container>
- );
+  );
 };
 export default Register;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './doctorschedule.css';
+import {toast} from 'react-toastify';
 
 const DoctorSchedule = () => {
   const API_URL = 'https://localhost:7166/api/DoctorSchedules';
@@ -43,7 +44,7 @@ const DoctorSchedule = () => {
 
       fetchSchedules(id);
     } catch (err) {
-      console.error('Failed to fetch doctor ID or schedules:', err);
+      toast.error('Failed to fetch doctor ID or schedules:', err);
     }
   };
 
@@ -54,7 +55,7 @@ const DoctorSchedule = () => {
       });
       setDepartments(res.data);
     } catch (err) {
-      console.error('Failed to fetch departments:', err);
+      toast.error('Failed to fetch departments:', err);
     }
   };
 
@@ -65,7 +66,7 @@ const DoctorSchedule = () => {
       });
       setSchedules(res.data);
     } catch (err) {
-      console.error('Error fetching schedules:', err);
+      toast.error('Error fetching schedules:', err);
     }
   };
 
@@ -86,7 +87,7 @@ const DoctorSchedule = () => {
 
     // ❌ Reject past dates and times
     if (selectedDate < today) {
-      window.alert("❌ Cannot select a past date or time.");
+      toast.error(" Cannot select a past date or time.");
       return;
     }
 
@@ -95,7 +96,7 @@ const DoctorSchedule = () => {
       schedules.length > 0 &&
       schedules.some(s => s.department.toLowerCase() !== form.department.toLowerCase())
     ) {
-      window.alert("❌ You already have schedules for a different department. Changing department is not allowed.");
+      toast.error(" You already have schedules for a different department. Changing department is not allowed.");
       return;
     }
 
@@ -112,19 +113,19 @@ const DoctorSchedule = () => {
         await axios.post(API_URL, payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        alert('✅ Schedule added successfully');
+        toast.success(' Schedule added successfully');
       } else {
         await axios.put(API_URL, payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        alert('✅ Schedule updated successfully');
+        toast.success(' Schedule updated successfully');
       }
 
       resetForm();
       fetchSchedules(doctorId);
     } catch (err) {
-      console.error('❌ Failed to save schedule:', err.response?.data || err.message);
-      window.alert("❌ Error saving schedule. Please check input or server.");
+      toast.error(' Failed to save schedule:', err.response?.data || err.message);
+      toast.error(" Error saving schedule. Please check input or server.");
     }
   };
 
@@ -145,7 +146,7 @@ const DoctorSchedule = () => {
         });
         fetchSchedules(doctorId);
       } catch (err) {
-        console.error('Failed to delete schedule:', err);
+        toast.error('Failed to delete schedule:', err);
       }
     }
   };

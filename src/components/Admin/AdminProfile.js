@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './adminprofile.css'; // ✅ same styling as patient profile
+import {toast} from 'react-toastify';
  
 const AdminProfile = () => {
   const [form, setForm] = useState({
@@ -28,7 +29,7 @@ const AdminProfile = () => {
         setForm(res.data);
         localStorage.setItem('userId', res.data.userId); // if needed elsewhere
       } catch (err) {
-        alert('Failed to load admin profile');
+        toast.error('Failed to load admin profile');
       }
     };
  
@@ -49,9 +50,9 @@ const AdminProfile = () => {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
-      alert('Profile updated successfully!');
+      toast.success('Profile updated successfully!');
     } catch (err) {
-      alert('Failed to update profile');
+      toast.error('Failed to update profile');
     }
   };
  

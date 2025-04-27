@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './patientappointment.css';
+import {toast} from 'react-toastify';
  
 const API_BASE = 'https://localhost:7166/api';
  
@@ -19,7 +20,7 @@ const PatientAppointments = () => {
  
   const fetchAppointments = async () => {
     if (!userId) {
-      console.warn('User ID not available yet.');
+      toast.warn('User ID not available yet.');
       return;
     }
  
@@ -29,7 +30,7 @@ const PatientAppointments = () => {
       });
       setAppointments(res.data);
     } catch {
-      alert('Failed to load appointments');
+      toast.error('Failed to load appointments');
     }
   };
  
@@ -41,7 +42,7 @@ const PatientAppointments = () => {
         });
         fetchAppointments();
       } catch {
-        alert('Failed to cancel appointment');
+        toast.error('Failed to cancel appointment');
       }
     }
   };
@@ -65,7 +66,7 @@ const PatientAppointments = () => {
         },
       }));
     } catch {
-      alert('Failed to fetch available dates');
+      toast.error('Failed to fetch available dates');
     }
   };
  
@@ -88,7 +89,7 @@ const PatientAppointments = () => {
         },
       }));
     } catch {
-      alert('Failed to load time slots');
+      toast.error('Failed to load time slots');
     }
   };
  
@@ -105,7 +106,7 @@ const PatientAppointments = () => {
   const handleRescheduleSubmit = async (appointmentId) => {
     const data = rescheduleData[appointmentId];
     if (!data?.date || !data?.time) {
-      alert('Please select both date and time');
+      toast.error('Please select both date and time');
       return;
     }
     const formattedTime = data.time.length === 5 ? `${data.time}:00` : data.time;
@@ -119,7 +120,7 @@ const PatientAppointments = () => {
       setActiveRescheduleId(null);
       fetchAppointments();
     } catch (err) {
-      alert(err.response?.data?.message || 'Failed to reschedule');
+      toast.error(err.response?.data?.message || 'Failed to reschedule');
     }
   };
  

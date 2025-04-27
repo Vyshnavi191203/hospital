@@ -6,6 +6,7 @@ import MedicalHistoryForm from './MedicalHistoryForm';
 import './doctordashboard.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 const DoctorDashboard = () => {
 const [userId, setUserId] = useState(localStorage.getItem('userId'));
@@ -37,7 +38,7 @@ localStorage.setItem('userId', response.data.userId);
 setUserId(response.data.userId);
 }
 } catch (err) {
-console.error('Failed to fetch doctor ID:', err);
+toast.error('Failed to fetch doctor ID:', err);
 }
 }
 };

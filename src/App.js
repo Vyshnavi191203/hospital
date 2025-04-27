@@ -1,6 +1,8 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
  
 // Public Components
 import Navbar from './components/Navbar';
@@ -30,7 +32,7 @@ function App() {
 <Router>
       {/* ✅ Navbar appears on all pages */}
 <Navbar />
- 
+ <ToastContainer/>
       <Routes>
         {/* ✅ Public Routes */}
 <Route path="/" element={<Home />} />

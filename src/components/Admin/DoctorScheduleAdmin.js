@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './adminmodules.css';
+import {toast} from 'react-toastify';
 
 const DoctorScheduleAdmin = () => {
   const [departments, setDepartments] = useState([]);
@@ -50,7 +51,7 @@ const DoctorScheduleAdmin = () => {
       });
       setDepartments(res.data);
     } catch {
-      alert('Error fetching departments');
+      toast.error('Error fetching departments');
     }
   };
 
@@ -61,7 +62,7 @@ const DoctorScheduleAdmin = () => {
       });
       setDoctors(res.data);
     } catch {
-      alert('Error fetching doctors');
+      toast.error('Error fetching doctors');
     }
   };
 
@@ -73,7 +74,7 @@ const DoctorScheduleAdmin = () => {
       });
       setSchedules(res.data);
     } catch {
-      alert('Error fetching schedules');
+      toast.error('Error fetching schedules');
     }
   };
 
@@ -83,7 +84,7 @@ const DoctorScheduleAdmin = () => {
 
   const handleSubmit = async () => {
     if (!selectedDoctor || !form.department || !form.availableDate || !form.timeSlot) {
-      alert('Please fill all fields');
+      toast.warn('Please fill all fields');
       return;
     }
 
@@ -99,7 +100,7 @@ const DoctorScheduleAdmin = () => {
     const isToday = selectedDate.toDateString() === today.toDateString();
     const now = new Date();
     if (isToday && selectedDate <= now) {
-      window.alert("❌ Cannot select a past time for today.");
+      toast.error("❌ Cannot select a past time for today.");
       return;
     }
 
@@ -114,17 +115,17 @@ const DoctorScheduleAdmin = () => {
         await axios.post(`${API_BASE}/DoctorSchedules`, payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        alert('Schedule added!');
+        toast.success('Schedule added!');
       } else {
         await axios.put(`${API_BASE}/DoctorSchedules`, payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        alert('Schedule updated!');
+        toast.success('Schedule updated!');
       }
       resetForm();
       fetchSchedules();
     } catch (err) {
-      alert('Failed to save schedule: ' + err.message);
+      toast.error('Failed to save schedule: ' + err.message);
     }
   };
 
@@ -136,7 +137,7 @@ const DoctorScheduleAdmin = () => {
         });
         fetchSchedules();
       } catch {
-        alert('Failed to delete schedule');
+        toast.error('Failed to delete schedule');
       }
     }
   };
